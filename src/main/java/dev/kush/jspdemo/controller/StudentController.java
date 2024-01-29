@@ -56,6 +56,19 @@ public class StudentController {
 
 	}
 	
+	@PostMapping("/updateForm")
+	public ModelAndView updateStudentForm(IdDto idDto) {
+		ModelAndView mv = new ModelAndView("update");
+		mv.addObject("student",studentService.getById(idDto.id()));
+		return mv;
+	}
+	
+	@PostMapping("/update")
+	public String updateStudent(Student student) {
+		studentService.updateStudent(student);
+		return "redirect:/student/all";
+	}
+	
 	
 	
 	

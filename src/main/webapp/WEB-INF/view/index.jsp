@@ -19,6 +19,10 @@
 	crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
 <style>
+h2 {
+	text-align: center;
+	color: #333
+}
 /* Style for the entire table */
 table {
 	border-collapse: collapse;
@@ -50,11 +54,23 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
 	background-color: #e6e6e6; /* Light gray background color on hover */
 }
+
+/* Hover effect for table rows */
+/* tbody tr:hover {
+    background-color: #BFD8AF; 
+    transition: background-color 0.3s ease; 
+} */
+
+
+body {
+    background-color: #F5F5F5; /* Change to your desired background color */
+}
+
 </style>
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>Student Information Table</h2>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -65,6 +81,7 @@ tbody tr:hover {
 				<th scope="col">Position</th>
 				<th scope="col">Profile</th>
 				<th scope="col">Delete</th>
+				<th scope="col">Edit</th>
 
 			</tr>
 		</thead>
@@ -83,6 +100,10 @@ tbody tr:hover {
 					<td><form action="/student/delete" method="post">
 							<input type="hidden" name="id" value="${student.id}">
 							<button class="btn btn-danger">Delete</button>
+						</form></td>
+						<td><form action="/student/updateForm" method="post">
+							<input type="hidden" name="id" value="${student.id}">
+							<button class="btn btn-primary">Edit</button>
 						</form></td>
 				</tr>
 			</c:forEach>

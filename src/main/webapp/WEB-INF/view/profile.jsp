@@ -33,6 +33,24 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
         vertical-align: middle;
         margin-right: 5px;
     }
+    
+#mydiv {
+  transition: transform 0.3s ease;
+}
+
+#mydiv:hover {
+  transform: scale(1.1);
+}
+
+#div2 {
+  transition: transform 0.3s ease;
+}
+
+#div2:hover {
+  transform: scale(1.1);
+  background-color: #D4E7C5
+}
+    
 </style>
 </head>
 
@@ -43,7 +61,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
       <div class="col col-lg-6 mb-4 mb-lg-0">
         <div class="card mb-3" style="border-radius: .5rem;">
           <div class="row g-0">
-            <div class="col-md-4 gradient-custom text-center text-white"
+            <div class="col-md-4 gradient-custom text-center text-white" id="mydiv"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <img src="https://www.bing.com/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&w=267&h=233&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
                 alt="Avatar" class="img-fluid my-5" style="width: 80px; " />
@@ -52,7 +70,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
               <p>${student.position }</p>
               <i class="far fa-edit mb-5"></i>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" id="div2">
               <div class="card-body p-4">
                 <h6>Information</h6>
                 <hr class="mt-0 mb-4">

@@ -28,7 +28,6 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public List<Student> getAll() {
-		// TODO Auto-generated method stub
 		return studentRepository.findAll();
 	}
 	
@@ -36,13 +35,11 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public Student addStudent(Student student) {
-		// TODO Auto-generated method stub
 		return studentRepository.save(student);
 	}
 
 	@Override
 	public void deleteStudent(Long id) {
-		// TODO Auto-generated method stub
 		studentRepository.deleteById(id);
 	}
 
@@ -62,9 +59,42 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public Student getById(Long id) {
-		// TODO Auto-generated method stub
 		return studentRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("User with id doesn't exist"));
+	}
+
+
+	@Override
+	public Student updateStudent(Student student) {
+		Long id = student.getId();
+		Student newStd = studentRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("User with id doesn't exist"));
+
+		if (student.getName() != null && !student.getName().isEmpty()) {
+			newStd.setName(student.getName());
+		}
+		
+		if (student.getEmail() != null && !student.getEmail().isEmpty()) {
+			newStd.setEmail(student.getEmail());
+		}
+		if (student.getPhone() != null && !student.getPhone().isEmpty()) {
+			newStd.setPhone(student.getPhone());
+		}
+		
+		if (student.getGithub() != null && !student.getGithub().isEmpty()) {
+			newStd.setGithub(student.getGithub());
+		}
+		
+		if (student.getLinkedin() != null && !student.getLinkedin().isEmpty()) {
+			newStd.setLinkedin(student.getLinkedin());
+		}
+		
+		studentRepository.save(newStd);
+		
+		return newStd;
+		
+		
+		
 	}
 
 }

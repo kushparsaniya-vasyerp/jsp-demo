@@ -19,8 +19,9 @@
 <style>
   /* Add more styling to the form */
   form {
+
     max-width: 400px;
-    margin: auto;
+    margin: 35px 0px 10px 35%;
     padding: 20px;
     border: 1px solid #3498db;
     border-radius: 8px;
@@ -71,41 +72,40 @@
 
 </head>
 <body>
-	<form action="/student/add" method="post">
+	<form action="/student/update" method="post">
+	<input name="id" value="${student.id}" type="hidden">
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Name : </label> <input
 				type="text" class="form-control" id="exampleInputEmail1" name="name"
-				aria-describedby="emailHelp" required>
+				aria-describedby="emailHelp" value="${student.name}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Email :
 			</label> <input type="text" class="form-control"
-				id="exampleInputPassword1" name="email" required>
-			<div id="emailHelp" class="form-text">We'll never share your
-				email with anyone else.</div>
+				id="exampleInputPassword1" name="email" value="${student.email}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Phone : </label> <input
 				type="text" class="form-control" id="exampleInputEmail1"
-				 name="phone" required>
+				 name="phone" value="${student.phone}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Position :
 			</label> <input type="text" class="form-control" id="exampleInputEmail1"
-				name="position" required>
+				name="position" value="${student.position}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Github : </label>
 			<input type="text" class="form-control" id="exampleInputEmail1"
-				name="github">
+				name="github" value="${student.github}">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Linkdein :
 			</label> <input type="text" class="form-control" id="exampleInputEmail1"
-				name="linkedin">
+				name="linkedin" value="${student.linkedin}">
 		</div>
 		
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">Save</button>
 	</form>
 </body>
 </html>
