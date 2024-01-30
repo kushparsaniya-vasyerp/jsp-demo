@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.kush.jspdemo.dto.IdDto;
@@ -21,10 +22,10 @@ public class StudentController {
 	StudentService studentService;
 	
 	@GetMapping("/all")
-	public ModelAndView getAll() {
+	public ModelAndView getAll(@RequestParam(name = "pageSize", defaultValue = "5") int pageSize) {
 		ModelAndView mv = new ModelAndView("table");
 		long totalCount = studentService.getCount(); // Assuming studentService.getCount() returns a long value
-        long value = 5;
+        long value = (long) pageSize;
 
         // Calculate the number of iterations
         long count = ceilDivision(totalCount, value);
@@ -80,10 +81,10 @@ public class StudentController {
 	}
 	
 	@GetMapping("/page/{pageno}")
-	public ModelAndView getByPage(@PathVariable Integer pageno){
+	public ModelAndView getByPage(@PathVariable Integer pageno, @RequestParam(name = "pageSize", defaultValue = "5") int pageSize){
 		ModelAndView mv = new ModelAndView("table");
 		long totalCount = studentService.getCount(); // Assuming studentService.getCount() returns a long value
-        long value = 5;
+        long value = (long) pageSize;
 
         // Calculate the number of iterations
         long count = ceilDivision(totalCount, value);

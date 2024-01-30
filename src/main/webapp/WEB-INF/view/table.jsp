@@ -3,6 +3,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,14 +210,15 @@
 								<a href="#" class="btn btn-sm btn-primary pull-left"
 									onclick="submitForm()" id="add"><i
 									class="fa fa-plus-circle"></i> Add New</a>
-								<form class="form-horizontal pull-right" onchange="select(this)">
+								<form class="form-horizontal pull-right" action="/student/all">
 									<div class="form-group">
-										<label>Show : </label> <select class="form-control">
-											<option>5</option>
-											<option>10</option>
-											<option>15</option>
-											<option>20</option>
+										<label>Show : </label> <select class="form-control" name="pageSize" onchange="this.form.submit()">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="15">15</option>
+											<option value="20">20</option>
 										</select>
+									
 									</div>
 								</form>
 							</div>
