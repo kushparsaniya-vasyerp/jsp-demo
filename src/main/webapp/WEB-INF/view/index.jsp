@@ -65,9 +65,26 @@ tbody tr:hover {
 body {
     background-color: #F5F5F5; /* Change to your desired background color */
 }
-
+.pagination{ margin: 0; }
+.pagination li a{
+    color: #fff;
+    background-color: rgba(0,0,0,0.3);
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 2px;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+}
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a{
+    color: #fff;
+    background-color: #000;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
 </style>
-<title>Insert title here</title>
+<title>Student</title>
 </head>
 <body>
 	<h2>Student Information Table</h2>
@@ -117,8 +134,28 @@ body {
 
 	<center>
 		<form action="/student/addForm" method="post">
-			<button class="btn btn-primary">Add</button>
+			<button class="btn btn-primary">+ Add Student</button>
 		</form>
 	</center>
+	<div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">showing <b>5</b> out of <b>25</b> entries</div>
+                        <div class="col-sm-6 col-xs-6">
+                            <ul class="pagination hidden-xs pull-right">
+                                <li><a href="#">«</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                            <ul class="pagination visible-xs pull-right">
+                                <li><a href="#">«</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 </body>
 </html>

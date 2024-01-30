@@ -3,6 +3,8 @@ package dev.kush.jspdemo.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
@@ -91,10 +93,23 @@ public class StudentServiceImpl implements StudentService{
 		
 		studentRepository.save(newStd);
 		
-		return newStd;
-		
-		
+		return newStd;	
 		
 	}
+
+
+	@Override
+	public List<Student> getByPage(Integer pageno, Integer size) {
+		PageRequest pr = PageRequest.of(pageno, size);
+		var page = studentRepository.findAll(pr);
+		return page.getContent();
+	}
+
+
+	@Override
+	public Long getCount() {
+		return studentRepository.count();	}
+	
+	
 
 }

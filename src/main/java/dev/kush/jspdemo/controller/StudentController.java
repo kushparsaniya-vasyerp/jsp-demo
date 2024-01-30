@@ -3,7 +3,9 @@ package dev.kush.jspdemo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,8 +22,16 @@ public class StudentController {
 	
 	@GetMapping("/all")
 	public ModelAndView getAll() {
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("students",studentService.getAll());
+		ModelAndView mv = new ModelAndView("table");
+		long totalCount = studentService.getCount(); // Assuming studentService.getCount() returns a long value
+        long value = 5;
+
+        // Calculate the number of iterations
+        long count = ceilDivision(totalCount, value);
+		mv.addObject("count",count);
+		mv.addObject("entries",totalCount);
+		mv.addObject("students",studentService.getByPage(0,(int) value));
+		
 		return mv;
 	}
 	
@@ -68,6 +78,24 @@ public class StudentController {
 		studentService.updateStudent(student);
 		return "redirect:/student/all";
 	}
+	
+	@GetMapping("/page/{pageno}")
+	public ModelAndView getByPage(@PathVariable Integer pageno){
+		ModelAndView mv = new ModelAndView("table");
+		long totalCount = studentService.getCount(); // Assuming studentService.getCount() returns a long value
+        long value = 5;
+
+        // Calculate the number of iterations
+        long count = ceilDivision(totalCount, value);
+		mv.addObject("entries",totalCount);
+		mv.addObject("count",count);
+		mv.addObject("students",studentService.getByPage(pageno - 1,(int) value));
+		return mv;
+	}
+	
+	 public static long ceilDivision(long dividend, long divisor) {
+	        return (long) Math.ceil((double) dividend / divisor);
+	    }
 	
 	
 	
