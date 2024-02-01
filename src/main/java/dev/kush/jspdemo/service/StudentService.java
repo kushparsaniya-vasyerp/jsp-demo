@@ -13,7 +13,7 @@ public interface StudentService {
 	
 	Student addStudent(Student student);
 	
-	void deleteStudent(Long id);
+	String deleteStudent(Long id);
 	
 	Student addRandomStudent();
 	
