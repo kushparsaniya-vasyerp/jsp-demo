@@ -171,7 +171,7 @@
 }
 
 #add {
-	background-color: green;
+	background-color: ;
 }
 </style>
 <script>
